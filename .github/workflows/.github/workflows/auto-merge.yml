@@ -1,1 +1,16 @@
 
+name: Auto-merge
+on:
+  pull_request:
+    types: [labeled]
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'auto-merge')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ahmadnassri/action-workflow-queue@v1
+      - uses: peaceiris/actions-auto-merge@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pull_request: ${{ github.event.pull_request.number }}
