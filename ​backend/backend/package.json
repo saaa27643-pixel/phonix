@@ -1,4 +1,4 @@
-cat > package.json << 'EOF'
+
 {
   "name": "phoenix-v10",
   "version": "10.0.0",
@@ -17,4 +17,3 @@ cat > package.json << 'EOF'
     "ws": "^8.14.2"
   }
 }
-EOF
